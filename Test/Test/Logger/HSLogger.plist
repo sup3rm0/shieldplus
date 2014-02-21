@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>host</key>
+	<string>176.66.1.6</string>
+	<key>port</key>
+	<string>9602</string>
+	<key>broadcastLog</key>
+	<false/>
+	<key>loggingLevel</key>
+	<integer>1</integer>
+	<key>logOnConsole</key>
+	<true/>
+</dict>
+</plist>
