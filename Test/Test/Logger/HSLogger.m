@@ -10,11 +10,16 @@
 
 @implementation HSLogger
 
+#define LOGGING_LEVEL_DEBUG                 1
+#define LOGGING_LEVEL_WARNING               2
+#define LOGGING_LEVEL_ERROR                 3
+#define LOGGING_LEVEL_DEBUG_WARNING         4
+#define LOGGING_LEVEL_WARNING_ERROR         5
+#define LOGGING_LEVEL_DEBUG_ERROR           6
+#define LOGGING_LEVEL_DEBUG_WARNING_ERROR   7
+
 + (void)logWithLoggingLevel:(int)level log:(NSString *)str
 {
-    
-    NSLog(@"Logging Level: %i", level);
-    
 	NSString *plistPath = [HSLogger dataFilePath:NO withFile:@"HSLogger"];
 	NSDictionary *plist = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
 	
@@ -23,21 +28,57 @@
 		return;
 	}
 	
-	BOOL logOnConsole = [[plist objectForKey:@"logOnConsole"] boolValue];
-	if (logOnConsole) 
-	{
-		NSLog(@"%@", str);
-	}
-	
-    /*
-	BOOL broadcast = [[plist objectForKey:@"broadcastLog"] boolValue];
-	if(broadcast)
-	{
-		NSString *host	= [plist objectForKey:@"host"];
-		int port		= [[plist objectForKey:@"port"] intValue];	
-		[HSLogger broadcastLog:host withPort:port withData:[str dataUsingEncoding:NSUTF8StringEncoding]];	
-	}
-    */
+    int loggingLevel = [[plist objectForKey:@"loggingLevel"] integerValue];
+    if (loggingLevel > 0 && loggingLevel <8)
+    {
+        BOOL logOnConsole = [[plist objectForKey:@"logOnConsole"] boolValue];
+        if (logOnConsole)
+        {
+            BOOL log = NO;
+            
+            switch (loggingLevel)
+            {
+                case LOGGING_LEVEL_DEBUG:
+                    if (level == 1) log = YES;
+                    break;
+                case LOGGING_LEVEL_WARNING:
+                    if (level == 2) log = YES;
+                    break;
+                case LOGGING_LEVEL_ERROR:
+                    if (level == 3) log = YES;
+                    break;
+                case LOGGING_LEVEL_DEBUG_WARNING:
+                    if (level == 1 || level == 2) log = YES;
+                    break;
+                case LOGGING_LEVEL_WARNING_ERROR:
+                    if (level == 2 || level == 3) log = YES;
+                    break;
+                case LOGGING_LEVEL_DEBUG_ERROR:
+                    if (level == 1 || level == 3) log = YES;
+                    break;
+                case LOGGING_LEVEL_DEBUG_WARNING_ERROR:
+                    if (level == 1 || level == 2 || level == 3) log = YES;
+                    break;
+                default:
+                    break;
+            }
+
+            if (log)
+            {
+                NSLog(@"%@", str);
+            }
+            
+            /*
+             BOOL broadcast = [[plist objectForKey:@"broadcastLog"] boolValue];
+             if(broadcast)
+             {
+             NSString *host	= [plist objectForKey:@"host"];
+             int port		= [[plist objectForKey:@"port"] intValue];
+             [HSLogger broadcastLog:host withPort:port withData:[str dataUsingEncoding:NSUTF8StringEncoding]];
+             }
+             */
+        }        
+    }
 }
 
 /*

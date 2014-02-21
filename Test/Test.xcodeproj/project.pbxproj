@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56661DAC18B7703D0057E81E /* imgMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 56661DAA18B7703D0057E81E /* imgMap.png */; };
+		56661DAD18B7703D0057E81E /* imgMap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56661DAB18B7703D0057E81E /* imgMap@2x.png */; };
 		56A71F9618B7489F000F3606 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56A71F9518B7489F000F3606 /* Foundation.framework */; };
 		56A71F9818B7489F000F3606 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56A71F9718B7489F000F3606 /* CoreGraphics.framework */; };
 		56A71F9A18B7489F000F3606 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56A71F9918B7489F000F3606 /* UIKit.framework */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		56661DAA18B7703D0057E81E /* imgMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imgMap.png; sourceTree = "<group>"; };
+		56661DAB18B7703D0057E81E /* imgMap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imgMap@2x.png"; sourceTree = "<group>"; };
 		56A71F9218B7489F000F3606 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56A71F9518B7489F000F3606 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		56A71F9718B7489F000F3606 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -87,6 +91,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56661DA918B7703D0057E81E /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				56661DAA18B7703D0057E81E /* imgMap.png */,
+				56661DAB18B7703D0057E81E /* imgMap@2x.png */,
+			);
+			name = Icons;
+			path = ../Icons;
+			sourceTree = "<group>";
+		};
 		56A71F8918B7489F000F3606 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +135,7 @@
 		56A71F9B18B7489F000F3606 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				56661DA918B7703D0057E81E /* Icons */,
 				56A71FCF18B74FA3000F3606 /* Logger */,
 				56A71FA418B7489F000F3606 /* HSAppDelegate.h */,
 				56A71FA518B7489F000F3606 /* HSAppDelegate.m */,
@@ -253,7 +268,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				56A71FAE18B7489F000F3606 /* Images.xcassets in Resources */,
+				56661DAC18B7703D0057E81E /* imgMap.png in Resources */,
 				56A71FA018B7489F000F3606 /* InfoPlist.strings in Resources */,
+				56661DAD18B7703D0057E81E /* imgMap@2x.png in Resources */,
 				56A71FA918B7489F000F3606 /* Main.storyboard in Resources */,
 				56A71FD418B74FA3000F3606 /* HSLogger.plist in Resources */,
 			);
@@ -408,6 +425,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Test/Test-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					HSLOG_ENABLED,
+				);
 				INFOPLIST_FILE = "Test/Test-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -492,6 +514,7 @@
 				56A71FC618B7489F000F3606 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		56A71FC718B7489F000F3606 /* Build configuration list for PBXNativeTarget "TestTests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +523,7 @@
 				56A71FC918B7489F000F3606 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

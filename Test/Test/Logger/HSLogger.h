@@ -6,9 +6,13 @@
 //
 
 #ifdef HSLOG_ENABLED
-#	define HSLog(level, fmt, ...) [HSLogger logWithLoggingLevel:level log:[NSString stringWithFormat:(@"%s[L:%d]\n" fmt @"\n-"), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__]];
+#	define HSLog(fmt, ...) [HSLogger logWithLoggingLevel:1 log:[NSString stringWithFormat:(@"%s[L:%d]\n" fmt @"\n-"), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__]];
+#	define HSLogWarning(fmt, ...) [HSLogger logWithLoggingLevel:2 log:[NSString stringWithFormat:(@"%s[L:%d]\n" fmt @"\n-"), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__]];
+#	define HSLogError(fmt, ...) [HSLogger logWithLoggingLevel:3 log:[NSString stringWithFormat:(@"%s[L:%d]\n" fmt @"\n-"), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__]];
 #else
 #	define HSLog(...)
+#	define HSLogWarning(...)
+#	define HSLogError(...)
 #endif
 
 @interface HSLogger : NSObject
